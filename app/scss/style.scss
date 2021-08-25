@@ -65,9 +65,13 @@ body {
             font-size: 18px;
             font-weight: 700;
             background-color: #CC0000;
-            box-shadow: 0px 4px 20px rgba(21, 32, 132, 0.3);
             border: none;
             border-radius: 10px;
+            cursor: pointer;
+            transition: box-shadow .3s ease;
+            &:hover {
+                box-shadow: 0px 4px 20px rgba(21, 32, 132, 0.3);
+            }
         }
     }
 }
@@ -121,6 +125,7 @@ body {
             }
         }
         .outsourcing {
+            margin-bottom: 96px;
             .image {
                 margin-left: 72px;
             }
@@ -189,12 +194,16 @@ body {
                 font-family: inherit;
                 width: 100%;
                 background-color: #CC0000;
-                box-shadow: 0px 4px 20px rgba(21, 32, 132, 0.3);
                 border-radius: 10px;
                 text-align: center;
                 border: none;
+                cursor: pointer;
+                transition: box-shadow .3s ease;
                 .inactive {
                     opacity: 0.4;
+                }
+                &:hover {
+                    box-shadow: 0px 4px 20px rgba(21, 32, 132, 0.3);
                 }
             }
         }
@@ -203,7 +212,8 @@ body {
             border-radius: 10px;
             border: 1px solid rgba(21, 32, 132, 0.2);
             background-color: #fff;
-            
+            height: 800px;
+            overflow-y: scroll;
             .title {
                 color: $title-primary;
                 font-size: 24px;

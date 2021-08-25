@@ -46,9 +46,12 @@ body {
     font-size: 18px;
     font-weight: 700;
     background-color: #CC0000;
-    box-shadow: 0px 4px 20px rgba(21, 32, 132, 0.3);
     border: none;
-    border-radius: 10px; }
+    border-radius: 10px;
+    cursor: pointer;
+    transition: box-shadow .3s ease; }
+    .banner .container .request:hover {
+      box-shadow: 0px 4px 20px rgba(21, 32, 132, 0.3); }
 
 .service .container {
   max-width: 960px;
@@ -82,8 +85,10 @@ body {
       flex: 1; }
   .service .container .recruitment .image {
     margin-right: 72px; }
-  .service .container .outsourcing .image {
-    margin-left: 72px; }
+  .service .container .outsourcing {
+    margin-bottom: 96px; }
+    .service .container .outsourcing .image {
+      margin-left: 72px; }
 
 .request {
   background-color: #152084; }
@@ -137,17 +142,22 @@ body {
         font-family: inherit;
         width: 100%;
         background-color: #CC0000;
-        box-shadow: 0px 4px 20px rgba(21, 32, 132, 0.3);
         border-radius: 10px;
         text-align: center;
-        border: none; }
+        border: none;
+        cursor: pointer;
+        transition: box-shadow .3s ease; }
         .request .container form .request-button .inactive {
           opacity: 0.4; }
+        .request .container form .request-button:hover {
+          box-shadow: 0px 4px 20px rgba(21, 32, 132, 0.3); }
     .request .container .privacy-policy {
       padding: 24px;
       border-radius: 10px;
       border: 1px solid rgba(21, 32, 132, 0.2);
-      background-color: #fff; }
+      background-color: #fff;
+      height: 800px;
+      overflow-y: scroll; }
       .request .container .privacy-policy .title {
         color: #152084;
         font-size: 24px;
