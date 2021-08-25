@@ -10,7 +10,7 @@ body {
 .header {
   background-color: #152084; }
   .header .container {
-    max-width: 1440px;
+    max-width: 960px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -25,7 +25,7 @@ body {
       font-weight: 700; }
 
 .banner .container {
-  max-width: 1440px;
+  max-width: 960px;
   margin: 0 auto; }
   .banner .container .title {
     margin-top: 120px;
@@ -51,7 +51,7 @@ body {
     border-radius: 10px; }
 
 .service .container {
-  max-width: 1440px;
+  max-width: 960px;
   margin: 0 auto; }
   .service .container .title {
     text-align: center;
@@ -64,6 +64,7 @@ body {
     font-weight: 700;
     text-align: center; }
   .service .container .description .content {
+    text-indent: 56px;
     margin-top: 32px;
     color: #23242B;
     font-size: 24px;
@@ -76,6 +77,89 @@ body {
     align-items: center;
     margin-top: 120px; }
     .service .container .recruitment .image, .service .container .outsourcing .image {
-      width: 560px; }
+      flex: 0.82352941176; }
     .service .container .recruitment .description, .service .container .outsourcing .description {
-      width: 608px; }
+      flex: 1; }
+  .service .container .recruitment .image {
+    margin-right: 72px; }
+  .service .container .outsourcing .image {
+    margin-left: 72px; }
+
+.request {
+  background-color: #152084; }
+  .request .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 100px;
+    background-color: #F6F8FB; }
+    .request .container .title {
+      color: #152084;
+      font-size: 64px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 56px; }
+    .request .container form {
+      display: grid;
+      grid-template-rows: 1fr;
+      gap: 24px; }
+      .request .container form .field-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px; }
+      .request .container form .field-inline {
+        display: flex;
+        align-items: center; }
+      .request .container form .agree-policy label {
+        color: #23242B;
+        font-size: 14px;
+        font-weight: 300; }
+        .request .container form .agree-policy label a {
+          color: #152084; }
+      .request .container form label {
+        color: #23242B;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 2em; }
+      .request .container form input[type=text] {
+        padding: 8px 16px;
+        width: 100%;
+        color: #23242B;
+        font-size: 16px;
+        font-weight: 300;
+        border: 1px solid rgba(21, 32, 132, 0.2);
+        border-radius: 10px;
+        background-color: #fff; }
+      .request .container form .request-button {
+        padding: 16px 0;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 700;
+        font-family: inherit;
+        width: 100%;
+        background-color: #CC0000;
+        box-shadow: 0px 4px 20px rgba(21, 32, 132, 0.3);
+        border-radius: 10px;
+        text-align: center;
+        border: none; }
+        .request .container form .request-button .inactive {
+          opacity: 0.4; }
+    .request .container .privacy-policy {
+      padding: 24px;
+      border-radius: 10px;
+      border: 1px solid rgba(21, 32, 132, 0.2);
+      background-color: #fff; }
+      .request .container .privacy-policy .title {
+        color: #152084;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 0; }
+      .request .container .privacy-policy hr {
+        background-color: #D0D2E6;
+        height: 1px;
+        border: none;
+        margin: 16px 0 24px 0; }
+      .request .container .privacy-policy .content {
+        color: #23242B;
+        font-size: 16px;
+        font-weight: 300; }
