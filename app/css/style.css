@@ -1,0 +1,15 @@
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #152084; }
+  .header .logo {
+    width: 120px;
+    height: 120px; }
+  .header .title {
+    color: #fff; }

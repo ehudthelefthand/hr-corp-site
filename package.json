@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp default"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.27.5",
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.0.0",
+    "node-sass": "^6.0.1"
   }
 }
