@@ -125,6 +125,7 @@ body {
             }
         }
         .outsourcing {
+            margin-bottom: 96px;
             .image {
                 margin-left: 72px;
             }
@@ -211,7 +212,8 @@ body {
             border-radius: 10px;
             border: 1px solid rgba(21, 32, 132, 0.2);
             background-color: #fff;
-            
+            height: 800px;
+            overflow-y: scroll;
             .title {
                 color: $title-primary;
                 font-size: 24px;
