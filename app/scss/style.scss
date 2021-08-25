@@ -1,5 +1,11 @@
-$blue: #152084;
-$white: #fff;
+$title-primary: #152084;
+$title-secondary: #FFF;
+$bg-primary: #152084;
+$bg-secondary: #F6F8FB;
+$body-primary: #23242B;
+$body-secondary: #FFF;
+$button: #FFF;
+$container-width: 1440px;
 
 html {
     box-sizing: border-box;
@@ -8,15 +14,104 @@ html {
     box-sizing: inherit;
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 .header {
-    display: flex;
-    align-items: center;
-    background-color: $blue;
-    .logo {
-        width: 120px;
-        height: 120px;
+    background-color: $bg-primary;
+    .container {
+        max-width: $container-width;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        padding: 20px 0;
+        .logo {
+            width: 120px;
+            height: 120px;
+        }
+        .title {
+            color: $title-secondary;
+            margin-left: 24px;
+            font-size: 24px;
+            font-weight: 700;
+        }
     }
-    .title {
-        color: $white;
+}
+
+.banner {
+    .container {
+        max-width: $container-width;
+        margin: 0 auto;
+        .title {
+            margin-top: 120px;
+            color: $title-primary;
+            font-size: 64px;
+            font-weight: 700;
+        }
+        .subtitle {
+            margin-top: 56px;
+            color: $body-primary;
+            font-size: 24px;
+            font-weight: 300;
+        }
+        .request {
+            margin-top: 48px;
+            margin-bottom: 96px;
+            padding: 16px 64px;
+            color: $button;
+            font-family: inherit;
+            font-size: 18px;
+            font-weight: 700;
+            background-color: #CC0000;
+            box-shadow: 0px 4px 20px rgba(21, 32, 132, 0.3);
+            border: none;
+            border-radius: 10px;
+        }
+    }
+}
+
+.service {
+    .container {
+        max-width: $container-width;
+        margin: 0 auto;
+        .title {
+            text-align: center;
+            color: $title-primary;
+            font-size: 64px;
+            font-weight: 700;
+        }
+        .description {
+            .title {
+                color: $title-primary;
+                font-size: 48px;
+                font-weight: 700;
+                text-align: center;
+            }
+            .content {
+                margin-top: 32px;
+                color: $body-primary;
+                font-size: 24px;
+                font-weight: 300;
+            }
+        }
+        .image {
+            img {
+                width: 100%;
+            }
+        }
+        .recruitment, .outsourcing {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 120px;
+
+            .image {
+                width: 560px;
+            }
+            .description {
+                width: 608px;
+            }
+        }
     }
 }
