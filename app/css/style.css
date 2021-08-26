@@ -12,6 +12,19 @@ body {
 body {
   font-family: 'Roboto', sans-serif; }
 
+body {
+  position: relative;
+  overflow-x: hidden; }
+  body img.gear {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    top: -150px;
+    right: -150px;
+    border-radius: 50%;
+    border: 50px solid #fff;
+    z-index: 1; }
+
 .header {
   background-color: #152084;
   position: relative; }
@@ -29,14 +42,6 @@ body {
       margin-left: 24px;
       font-size: 24px;
       font-weight: 700; }
-  .header img.gear {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    top: -150px;
-    right: -150px;
-    border-radius: 50%;
-    border: 50px solid #fff; }
 
 .banner .container {
   max-width: 960px;

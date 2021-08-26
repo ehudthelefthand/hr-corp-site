@@ -33,6 +33,22 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    position: relative;
+    overflow-x: hidden;
+    img.gear {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        top: -150px;
+        right: -150px;
+        border-radius: 50%;
+        border: 50px solid #fff;
+        z-index: 1;
+    }
+}
+
+
 .header {
     background-color: $bg-primary;
     position: relative;
@@ -52,15 +68,6 @@ body {
             font-size: 24px;
             font-weight: 700;
         }
-    }
-    img.gear {
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        top: -150px;
-        right: -150px;
-        border-radius: 50%;
-        border: 50px solid #fff;
     }
 }
 
