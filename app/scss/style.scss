@@ -8,11 +8,25 @@ $body-secondary: #FFF;
 $button: #FFF;
 $container-width: 960px;
 
+@mixin section-title($text-align: center) {
+    color: $title-primary;
+    text-align: $text-align;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 90px;
+}
+
 html {
     box-sizing: border-box;
 }
 *, *:before, *:after {
     box-sizing: inherit;
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
 }
 
 body {
@@ -21,6 +35,7 @@ body {
 
 .header {
     background-color: $bg-primary;
+    position: relative;
     .container {
         max-width: $container-width;
         margin: 0 auto;
@@ -38,6 +53,15 @@ body {
             font-weight: 700;
         }
     }
+    img.gear {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        top: -150px;
+        right: -150px;
+        border-radius: 50%;
+        border: 50px solid #fff;
+    }
 }
 
 .banner {
@@ -45,16 +69,15 @@ body {
         max-width: $container-width;
         margin: 0 auto;
         .title {
+            @include section-title($text-align: left);
             margin-top: 120px;
-            color: $title-primary;
-            font-size: 64px;
-            font-weight: 700;
         }
         .subtitle {
             margin-top: 56px;
             color: $body-primary;
             font-size: 24px;
             font-weight: 300;
+            line-height: 40px;
         }
         .request {
             margin-top: 48px;
@@ -76,15 +99,49 @@ body {
     }
 }
 
+.slide {
+    &.swiper {
+        width: 100%;
+        height: 800px;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $bg-primary;
+        .title {
+            @include section-title;
+            color: #fff;
+        }
+        .content {
+            margin-top: 96px;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 40px;
+            text-align: center;
+        }
+    }
+
+    // .swiper-slide img {
+    //     display: block;
+    //     width: 100%;
+    //     height: 100%;
+    //     object-fit: cover;
+    // }
+}
+
 .service {
+    margin-top: 96px;
     .container {
         max-width: $container-width;
         margin: 0 auto;
         .title {
-            text-align: center;
-            color: $title-primary;
-            font-size: 64px;
-            font-weight: 700;
+            @include section-title;
         }
         .description {
             .title {
@@ -92,6 +149,7 @@ body {
                 font-size: 48px;
                 font-weight: 700;
                 text-align: center;
+                line-height: 60px;
             }
             .content {
                 text-indent: 56px;
@@ -99,6 +157,7 @@ body {
                 color: $body-primary;
                 font-size: 24px;
                 font-weight: 300;
+                line-height: 40px;
             }
         }
         .image {
@@ -138,13 +197,10 @@ body {
     .container {
         max-width: 800px;
         margin: 0 auto;
-        padding: 100px;
+        padding: 96px;
         background-color: $bg-secondary;
         .title {
-            color: $title-primary;
-            font-size: 64px;
-            font-weight: 700;
-            text-align: center;
+            @include section-title;
             margin-bottom: 56px;
         }
         form {
@@ -174,12 +230,13 @@ body {
                 color: $title-label;
                 font-size: 14px;
                 font-weight: 500;
-                line-height: 2em;
+                line-height: 28px;
             }
             input[type=text] {
                 padding: 8px 16px;
                 width: 100%;
                 color: $body-primary;
+                font-family: inherit;
                 font-size: 16px;
                 font-weight: 300;
                 border: 1px solid rgba(21, 32, 132, 0.2);
@@ -189,9 +246,9 @@ body {
             .request-button {
                 padding: 16px 0;
                 color: #fff;
+                font-family: inherit;
                 font-size: 18px;
                 font-weight: 700;
-                font-family: inherit;
                 width: 100%;
                 background-color: #CC0000;
                 border-radius: 10px;
@@ -199,7 +256,7 @@ body {
                 border: none;
                 cursor: pointer;
                 transition: box-shadow .3s ease;
-                .inactive {
+                &:disabled {
                     opacity: 0.4;
                 }
                 &:hover {
@@ -219,6 +276,7 @@ body {
                 font-size: 24px;
                 font-weight: 700;
                 text-align: center;
+                line-height: 40px;
                 margin-bottom: 0;
             }
             hr {
@@ -231,47 +289,90 @@ body {
                 color: $body-primary;
                 font-size: 16px;
                 font-weight: 300;
+                line-height: 28px;
+                p {
+                    margin-bottom: 24px;
+                    &.list-title, 
+                    &.p-title, 
+                    &.no-gap {
+                        margin-bottom: 0;
+                    }
+                }
+                ul, ol {
+                    list-style-position: inside;
+                    padding-left: 4px;
+                    margin-bottom: 24px;
+                }
+                ul {
+                    list-style-type: disc;
+                }
+                ol {
+                    &.number {
+                        list-style-type: decimal;
+                    }
+                    &.alpha {
+                        list-style-type: lower-alpha;
+                    }
+                }
             }
         }
     }
 }
 
 .footer{
-    background-color: $bg-secondary;
-    
+    position: relative;
+    border-top: 50px solid #fff;
+    // background technique from here: https://css-tricks.com/snippets/css/transparent-background-images
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-image: url(/assets/ft-bg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: .3;
+        z-index: -1;
+    }
     .container{
         display: flex;
         max-width: $container-width;
         align-items: center;
-        margin: 0 auto;
-
-        .red_rectangle{
-            width: 10px;
-            height: 200px;
-            margin-top: 50px;
-            margin-bottom: 50px;
-             margin-left: 45px;
-        }
+        margin: 48px auto;
+        margin-bottom: 0;
         .contact{
+            flex: 1;
+            padding-left: 24px;
+            border-left: 10px solid #CC0000;
             .title{
                 color: $title-primary;
-                font-size: 36px;
+                font-size: 36px; 
                 font-weight: 700;
-                margin-left: 24px;
+                line-height: 40px;
             }
-            .subtitle{
-                color: $title-primary;
-                font-size: 14px;
-                font-weight: 400;
-                margin-top: 30px;
-                margin-left: 24px;
+            .address{
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 40px;
+                margin-top: 32px;
+                .title {
+                    font-size: 16px;
+                    font-weight: 700;
+                }
             }
         }
         .ft-logo{
             width: 300px;
             height: 200px;
-            margin-left: 65px;
+            img {
+                width: 100%;
+            }
         }
     }
-    
+    .spacer {
+        display: block;
+        height: 48px;
+    }
 }
