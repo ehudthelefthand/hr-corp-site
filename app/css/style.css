@@ -12,19 +12,6 @@ body {
 body {
   font-family: 'Roboto', sans-serif; }
 
-body {
-  position: relative;
-  overflow-x: hidden; }
-  body img.gear {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    top: -150px;
-    right: -150px;
-    border-radius: 50%;
-    border: 50px solid #fff;
-    z-index: 1; }
-
 .header {
   background-color: #152084;
   position: relative; }
@@ -77,31 +64,52 @@ body {
 
 .slide.swiper {
   width: 100%;
-  height: 800px; }
-
-.slide .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
+  height: 800px;
   background-color: #152084; }
-  .slide .swiper-slide .title {
-    color: #152084;
-    text-align: center;
-    font-size: 64px;
-    font-weight: 700;
-    line-height: 90px;
-    color: #fff; }
-  .slide .swiper-slide .content {
-    margin-top: 96px;
-    color: #fff;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 40px;
-    text-align: center; }
+
+.slide .swiper-slide .container {
+  display: block;
+  position: relative;
+  max-width: 960px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 600px;
+  margin: 0 auto;
+  background-color: #152084; }
+  .slide .swiper-slide .container .slide-image {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    top: 50px;
+    z-index: 10; }
+  .slide .swiper-slide .container .slide-text {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0 40px;
+    position: absolute;
+    right: 24px;
+    z-index: 15;
+    font-size: 18px;
+    background-color: #152084; }
+    .slide .swiper-slide .container .slide-text .title {
+      color: #152084;
+      text-align: center;
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 90px;
+      color: #fff; }
+    .slide .swiper-slide .container .slide-text .content {
+      margin-top: 96px;
+      color: #fff;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 40px;
+      text-align: center; }
 
 .service {
   margin-top: 96px; }
@@ -257,10 +265,10 @@ body {
     left: 0;
     bottom: 0;
     right: 0;
-    background-image: url(/assets/ft-bg.png);
+    background-image: url(/assets/footer-background.png);
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: .3;
+    opacity: .1;
     z-index: -1; }
   .footer .container {
     display: flex;
@@ -278,17 +286,17 @@ body {
         font-weight: 700;
         line-height: 40px; }
       .footer .container .contact .address {
+        color: #23242B;
         font-size: 16px;
-        font-weight: 300;
+        font-weight: 400;
         line-height: 40px;
         margin-top: 32px; }
         .footer .container .contact .address .title {
           font-size: 16px;
           font-weight: 700; }
-    .footer .container .ft-logo {
-      width: 300px;
-      height: 200px; }
-      .footer .container .ft-logo img {
+    .footer .container .footer-logo {
+      width: 280px; }
+      .footer .container .footer-logo img {
         width: 100%; }
   .footer .spacer {
     display: block;

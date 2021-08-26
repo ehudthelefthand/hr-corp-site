@@ -33,22 +33,6 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-body {
-    position: relative;
-    overflow-x: hidden;
-    img.gear {
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        top: -150px;
-        right: -150px;
-        border-radius: 50%;
-        border: 50px solid #fff;
-        z-index: 1;
-    }
-}
-
-
 .header {
     background-color: $bg-primary;
     position: relative;
@@ -110,27 +94,52 @@ body {
     &.swiper {
         width: 100%;
         height: 800px;
+        background-color: $bg-primary;
     }
     .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        display: flex;
-        flex-flow: column;
-        justify-content: center;
-        align-items: center;
-        background-color: $bg-primary;
-        .title {
-            @include section-title;
-            color: #fff;
-        }
-        .content {
-            margin-top: 96px;
-            color: #fff;
-            font-size: 24px;
-            font-weight: 700;
-            line-height: 40px;
-            text-align: center;
+        .container {
+            display: block;
+            position: relative;
+            max-width: $container-width;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 600px;
+            margin: 0 auto;
+            background-color: $bg-primary;
+            .slide-image {
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 500px;
+                object-fit: cover;
+                top: 50px;
+                z-index: 10;
+            }
+            .slide-text {
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                padding: 0 40px;
+                position: absolute;
+                right: 24px;
+                z-index: 15;
+                font-size: 18px;
+                background-color: $bg-primary;
+                .title {
+                    @include section-title;
+                    color: #fff;
+                }
+                .content {
+                    margin-top: 96px;
+                    color: #fff;
+                    font-size: 24px;
+                    font-weight: 700;
+                    line-height: 40px;
+                    text-align: center;
+                }
+            }    
         }
     }
 
@@ -337,10 +346,10 @@ body {
         left: 0;
         bottom: 0;
         right: 0;
-        background-image: url(/assets/ft-bg.png);
+        background-image: url(/assets/footer-background.png);
         background-repeat: no-repeat;
         background-size: cover;
-        opacity: .3;
+        opacity: .1;
         z-index: -1;
     }
     .container{
@@ -360,8 +369,9 @@ body {
                 line-height: 40px;
             }
             .address{
+                color: $body-primary;
                 font-size: 16px;
-                font-weight: 300;
+                font-weight: 400;
                 line-height: 40px;
                 margin-top: 32px;
                 .title {
@@ -370,9 +380,8 @@ body {
                 }
             }
         }
-        .ft-logo{
-            width: 300px;
-            height: 200px;
+        .footer-logo{
+            width: 280px;
             img {
                 width: 100%;
             }
