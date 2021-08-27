@@ -111,6 +111,18 @@ body {
       line-height: 40px;
       text-align: center; }
 
+.slide .swiper-pagination {
+  bottom: 72px; }
+  .slide .swiper-pagination .swiper-pagination-bullet {
+    width: 72px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 0;
+    opacity: 1;
+    margin: 0 !important; }
+  .slide .swiper-pagination .swiper-pagination-bullet-active {
+    background-color: #CC0000; }
+
 .service {
   margin-top: 96px; }
   .service .container {
