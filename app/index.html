@@ -327,7 +327,11 @@
         let fields = []
         let requireFields = []
         for (let input of inputs) {
-            names.push(input.name)
+            const name = input.name
+            fields.push(name)
+            if (input.required) {
+                requireFields.push(name)
+            }
         }
         
         const form = document.getElementById('request-form')
@@ -337,7 +341,7 @@
         })
 
         function validate(inputs) {
-            names.map(name => inputs[name].value)
+            requireFields.map(name => inputs[name].value)
                 .map(v => v.trim())
         }
     </script>
