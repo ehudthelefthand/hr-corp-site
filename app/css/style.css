@@ -191,11 +191,45 @@ body {
         display: flex;
         align-items: center; }
       .request .container form .agree-policy label {
+        display: block;
+        position: relative;
+        padding-left: 32px;
         color: #23242B;
         font-size: 14px;
-        font-weight: 300; }
+        font-weight: 300;
+        cursor: pointer;
+        user-select: none; }
         .request .container form .agree-policy label a {
           color: #152084; }
+        .request .container form .agree-policy label input {
+          position: absolute;
+          opacity: 0;
+          height: 0;
+          width: 0; }
+          .request .container form .agree-policy label input:checked ~ .checkmark::after {
+            display: block; }
+          .request .container form .agree-policy label input:checked ~ .checkmark {
+            background-color: #23242B; }
+        .request .container form .agree-policy label .checkmark {
+          position: absolute;
+          top: 1px;
+          left: 0;
+          width: 24px;
+          height: 24px;
+          background-color: #FFF;
+          border: 1px solid  #23242B;
+          border-radius: 5px; }
+          .request .container form .agree-policy label .checkmark::after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 8px;
+            top: 4px;
+            width: 6px;
+            height: 12px;
+            border: solid #fff;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg); }
       .request .container form label {
         color: #23242B;
         font-size: 14px;
