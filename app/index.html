@@ -26,7 +26,7 @@
                 <h2>“Our solutions are built around your requirement.”</h2>
                 <h2>We always have a staff who provided consultation and work-in-progress along the way. </h2>
             </div>
-            <button class="request">Request a callback</button>
+            <button id="goto-request" class="request">Request a callback</button>
         </div>
     </div>
     <div class="slide swiper mySwiper">
@@ -100,39 +100,39 @@
             </section>
         </div>
     </div>
-    <div class="request">
+    <div id="request-section" class="request">
         <div class="container">
             <h1 class="title">Request a callback</h1>
             <form id="request-form" validate>
                 <div class="field-group">
                     <div>
-                        <div><label for="firstname">First name</label></div>
-                        <div><input id="firstname" name="firstname" type="text" required></div>
+                        <div><label for="firstname">First name<span class="required">*</span></label></div>
+                        <div><input id="firstname" name="firstname" type="text" required value="test"></div>
                     </div>
                     <div>
-                        <div><label for="lastname">Last name</label></div>
-                        <div><input id="lastname" name="lastname" type="text"></div>
+                        <div><label for="lastname">Last name<span class="required">*</span></label></div>
+                        <div><input id="lastname" name="lastname" type="text" required value="test"></div>
                     </div>
                 </div>
                 <div>
-                    <div><label for="email">Email</label></div>
-                    <div><input id="email" name="email" type="text"></div>
+                    <div><label for="email">Email<span class="required">*</span></label></div>
+                    <div><input id="email" name="email" type="email" required value="test@test"></div>
                 </div>
                 <div>
-                    <div><label for="phone">Phone Number</label></div>
-                    <div><input id="phone" name="phone" type="text"></div>
+                    <div><label for="phone">Phone Number<span class="required">*</span></label></div>
+                    <div><input id="phone" name="phone" type="tel" required value="test"></div>
                 </div>
                 <div>
-                    <div><label for="job">Job title</label></div>
-                    <div><input id="job" name="job" type="text"></div>
+                    <div><label for="job">Job title<span class="required">*</span></label></div>
+                    <div><input id="job" name="job" type="text" required value="test"></div>
                 </div>
                 <div>
-                    <div><label for="organisation">Organisation</label></div>
-                    <div><input id="organisation" name="organisation" type="text"></div>
+                    <div><label for="organisation">Organisation<span class="required">*</span></label></div>
+                    <div><input id="organisation" name="organisation" type="text" required value="test"></div>
                 </div>
                 <div>
                     <div><label for="website">Website URL</label></div>
-                    <div><input id="website" name="website" type="text"></div>
+                    <div><input id="website" name="website" type="text" value="test"></div>
                 </div>
                 <section id="privacy-policy" class="privacy-policy">
                     <h2 class="title">Privacy Policy</h2>
@@ -284,12 +284,12 @@
                 </section>
                 <div class="field-inline agree-policy">
                     <label for="agree-policy">I agree with all <a href="#privacy-policy">Privacy Policy</a>
-                        <input id="agree-policy" type="checkbox" name="isAgree">
+                        <input id="agree-policy" type="checkbox" name="isAgree" checked>
                         <span class="checkmark"></span>
                     </label>
                 </div>
                 <div>
-                    <button class="request-button">Request a callback</button>
+                    <button id="request-button" class="request-button" >Request a callback</button>
                 </div>
             </form>
         </div>
@@ -310,40 +310,77 @@
         <div class="spacer"></div>
     </div>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
-        const swiper = new Swiper(".mySwiper", {
+        const swiper = new Swiper('.mySwiper', {
             loop: true,
             autoplay: {
                 delay: 4000,
                 disableOnInteraction: false,
             },
             pagination: {
-                el: ".swiper-pagination",
+                el: '.swiper-pagination',
                 clickable: true,
             },
-        });
-
-        const inputs = document.querySelectorAll('#request-form input')
-        let fields = []
-        let requireFields = []
-        for (let input of inputs) {
-            const name = input.name
-            fields.push(name)
-            if (input.required) {
-                requireFields.push(name)
-            }
-        }
+        })
         
+        const policy = document.getElementById('privacy-policy')
+        const agree = document.getElementById('agree-policy')
+        const requestButton = document.getElementById('request-button')
         const form = document.getElementById('request-form')
-        form.addEventListener('submit', e => {
-            e.preventDefault()
-            validate(e.target)
+        const inputs = document.querySelectorAll('#request-form input')
+        const gotoRequest = document.getElementById('goto-request')
+        const requestSection = document.getElementById('request-section')
+
+        const end = policy.scrollHeight - policy.clientHeight
+
+        policy.addEventListener('scroll', function(e) {
+            if (e.target.scrollTop / end > .9) {
+                agree.disabled = false
+            }
         })
 
-        function validate(inputs) {
-            requireFields.map(name => inputs[name].value)
-                .map(v => v.trim())
-        }
+        agree.addEventListener('click', function(e) {
+            requestButton.disabled = !agree.checked
+        })
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault()
+            let data = {}
+            for (let input of inputs) {
+                data[input.name] = input.value
+            }
+            console.log(data)
+            const content = `
+                <html>
+                <body>
+                    <div><strong>First name: </strong><span>${data['firstname']}</span></div>
+                    <div><strong>Last name: </strong><span>${data['lastname']}</span></div>
+                    <div><strong>Email: </strong><span>${data['email']}</span></div>
+                    <div><strong>Phone Number: </strong><span>${data['phone']}</span></div>
+                    <div><strong>Job title: </strong><span>${data['job']}</span></div>
+                    <div><strong>Organisation: </strong><span>${data['organisation']}</span></div>
+                    <div><strong>Website: </strong><span>${data['website']}</span></div>
+                    <div><strong>Agree to policy?: </strong><span>${data['isAgree'] === 'on' ? 'Yes' : 'No'}</span></div>
+                </body>
+                </html>
+            `
+            Email.send({
+                Host : "smtp.mailtrap.io",
+                Username: '8b590d559f8ee6',
+                Password: '05e04e3862eb61',
+                To : 'recipient@pongneng.xyz',
+                From : "sender@pongneng.xyz",
+                Subject : "Test email",
+                Body : content
+            }).then(
+                message => alert(message)
+            );
+        })
+
+        gotoRequest.addEventListener('click', function() {
+            requestSection.scrollIntoView({ behavior: 'smooth' })
+        })
     </script>
 </body>
 </html>

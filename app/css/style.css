@@ -276,6 +276,26 @@ body {
       .request .container form .field-inline {
         display: flex;
         align-items: center; }
+      .request .container form label {
+        color: #23242B;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 28px; }
+        .request .container form label .required {
+          margin-left: 4px;
+          color: #CC0000; }
+      .request .container form input[type=text],
+      .request .container form input[type=email],
+      .request .container form input[type=tel] {
+        padding: 8px 16px;
+        width: 100%;
+        color: #23242B;
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 300;
+        border: 1px solid rgba(21, 32, 132, 0.2);
+        border-radius: 10px;
+        background-color: #fff; }
       .request .container form .agree-policy label {
         display: block;
         position: relative;
@@ -296,6 +316,8 @@ body {
             display: block; }
           .request .container form .agree-policy label input:checked ~ .checkmark {
             background-color: #23242B; }
+          .request .container form .agree-policy label input:disabled ~ .checkmark {
+            border-color: #DDD; }
         .request .container form .agree-policy label .checkmark {
           position: absolute;
           top: 1px;
@@ -316,21 +338,6 @@ body {
             border: solid #fff;
             border-width: 0 3px 3px 0;
             transform: rotate(45deg); }
-      .request .container form label {
-        color: #23242B;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 28px; }
-      .request .container form input[type=text] {
-        padding: 8px 16px;
-        width: 100%;
-        color: #23242B;
-        font-family: inherit;
-        font-size: 16px;
-        font-weight: 300;
-        border: 1px solid rgba(21, 32, 132, 0.2);
-        border-radius: 10px;
-        background-color: #fff; }
       .request .container form .request-button {
         padding: 16px 0;
         color: #fff;

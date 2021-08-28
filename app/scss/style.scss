@@ -340,6 +340,29 @@ body {
                 display: flex;
                 align-items: center;
             }
+            label {
+                color: $title-label;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 28px;
+                .required {
+                    margin-left: 4px;
+                    color: #CC0000;
+                }
+            }
+            input[type=text],
+            input[type=email],
+            input[type=tel] {
+                padding: 8px 16px;
+                width: 100%;
+                color: $body-primary;
+                font-family: inherit;
+                font-size: 16px;
+                font-weight: 300;
+                border: 1px solid rgba(21, 32, 132, 0.2);
+                border-radius: 10px;
+                background-color: #fff;
+            }
             .agree-policy {
                 label {
                     display: block;
@@ -363,6 +386,9 @@ body {
                         }
                         &:checked ~ .checkmark {
                             background-color: #23242B;
+                        }
+                        &:disabled ~ .checkmark {
+                            border-color: #DDD;
                         }
                     }
                     .checkmark {
@@ -388,23 +414,6 @@ body {
                         }
                     }
                 }
-            }
-            label {
-                color: $title-label;
-                font-size: 14px;
-                font-weight: 500;
-                line-height: 28px;
-            }
-            input[type=text] {
-                padding: 8px 16px;
-                width: 100%;
-                color: $body-primary;
-                font-family: inherit;
-                font-size: 16px;
-                font-weight: 300;
-                border: 1px solid rgba(21, 32, 132, 0.2);
-                border-radius: 10px;
-                background-color: #fff;
             }
             .request-button {
                 padding: 16px 0;
