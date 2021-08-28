@@ -103,36 +103,36 @@
     <div class="request">
         <div class="container">
             <h1 class="title">Request a callback</h1>
-            <form>
+            <form id="request-form" validate>
                 <div class="field-group">
                     <div>
                         <div><label for="firstname">First name</label></div>
-                        <div><input id="firstname" type="text"></div>
+                        <div><input id="firstname" name="firstname" type="text" required></div>
                     </div>
                     <div>
                         <div><label for="lastname">Last name</label></div>
-                        <div><input id="lastname" type="text"></div>
+                        <div><input id="lastname" name="lastname" type="text"></div>
                     </div>
                 </div>
                 <div>
                     <div><label for="email">Email</label></div>
-                    <div><input id="email" type="text"></div>
+                    <div><input id="email" name="email" type="text"></div>
                 </div>
                 <div>
                     <div><label for="phone">Phone Number</label></div>
-                    <div><input id="phone" type="text"></div>
+                    <div><input id="phone" name="phone" type="text"></div>
                 </div>
                 <div>
                     <div><label for="job">Job title</label></div>
-                    <div><input id="job" type="text"></div>
+                    <div><input id="job" name="job" type="text"></div>
                 </div>
                 <div>
                     <div><label for="organisation">Organisation</label></div>
-                    <div><input id="organisation" type="text"></div>
+                    <div><input id="organisation" name="organisation" type="text"></div>
                 </div>
                 <div>
                     <div><label for="website">Website URL</label></div>
-                    <div><input id="website" type="text"></div>
+                    <div><input id="website" name="website" type="text"></div>
                 </div>
                 <section id="privacy-policy" class="privacy-policy">
                     <h2 class="title">Privacy Policy</h2>
@@ -284,7 +284,7 @@
                 </section>
                 <div class="field-inline agree-policy">
                     <label for="agree-policy">I agree with all <a href="#privacy-policy">Privacy Policy</a>
-                        <input id="agree-policy" type="checkbox">
+                        <input id="agree-policy" type="checkbox" name="isAgree">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -322,6 +322,24 @@
                 clickable: true,
             },
         });
+
+        const inputs = document.querySelectorAll('#request-form input')
+        let fields = []
+        let requireFields = []
+        for (let input of inputs) {
+            names.push(input.name)
+        }
+        
+        const form = document.getElementById('request-form')
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            validate(e.target)
+        })
+
+        function validate(inputs) {
+            names.map(name => inputs[name].value)
+                .map(v => v.trim())
+        }
     </script>
 </body>
 </html>
