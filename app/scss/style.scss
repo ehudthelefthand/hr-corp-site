@@ -159,6 +159,10 @@ body {
     
 }
 
+.frame-1 {
+    object-fit: contain;
+}
+
 .service {
     margin-top: 96px;
     .line-container {
@@ -189,11 +193,27 @@ body {
         margin: 0 auto;
         .description {
             .title {
+                position: relative;
                 color: $title-primary;
                 font-size: 48px;
                 font-weight: 700;
                 text-align: center;
                 line-height: 60px;
+                &.line-right::after,
+                &.line-left::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 13px;
+                    width: 130px;
+                    height: 2px;
+                    background-color: #CC0000;
+                }
+                &.line-right::after {
+                    right: -48px;
+                }
+                &.line-left::after {
+                    left: -48px;
+                }
             }
             .content {
                 text-indent: 56px;
@@ -217,6 +237,9 @@ body {
 
             .image {
                 flex: 0.82352941176;
+                img {
+                    object-fit: contain;
+                }
             }
             .description {
                 flex: 1;
@@ -225,12 +248,69 @@ body {
         .recruitment {
             .image {
                 margin-right: 72px;
+                position: relative;
+                &::before {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: -16px;
+                    left: -16px;
+                    z-index: -1;
+                    background-image: url(/assets/recruitment-rectangle-1.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 100px;
+                    height: 250px;
+                    position: absolute;
+                    top: 24px;
+                    right: 60px;
+                    z-index: -2;
+                    background-image: url(/assets/recruitment-rectangle-2.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: right;
+                }
+                
             }
         }
         .outsourcing {
             margin-bottom: 96px;
             .image {
                 margin-left: 72px;
+                position: relative;
+                &::before {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 320px;
+                    position: absolute;
+                    top: 18px;
+                    left: -16px;
+                    z-index: -1;
+                    background-image: url(/assets/outsourcing-rectangle-1.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 350px;
+                    position: absolute;
+                    top: -16px;
+                    right: -16px;
+                    z-index: -2;
+                    background-image: url(/assets/outsourcing-rectangle-2.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: right;
+                }
             }
         }
     }
