@@ -285,7 +285,7 @@
                     </div>
                 </section>
                 <div class="field-inline agree-policy">
-                    <label for="agree-policy">I agree with all <a href="#privacy-policy">Privacy Policy</a>
+                    <label for="agree-policy">I agree with all <a href="#privacy-policy" id="agree-policy-link">Privacy Policy</a>
                         <input id="agree-policy" type="checkbox" name="isAgree">
                         <span class="checkmark"></span>
                     </label>
@@ -333,6 +333,7 @@
         const inputs = document.querySelectorAll('#request-form input')
         const gotoRequest = document.getElementById('goto-request')
         const requestSection = document.getElementById('request-section')
+        const agreePolicyLink = document.getElementById('agree-policy-link')
 
         const end = policy.scrollHeight - policy.clientHeight
 
@@ -384,10 +385,19 @@
             requestSection.scrollIntoView({ behavior: 'smooth' })
         })
 
+        agreePolicyLink.addEventListener('click', function(e) {
+            e.preventDefault()
+            policy.scrollTop = 0
+        })
+
         function resetForm() {
             for (let input of inputs) {
                 input.value = ''
             }
+            requestButton.disabled = true
+            agree.disabled = true
+            agree.checked = false
+            policy.scrollTop = 0
         }
     </script>
 </body>
