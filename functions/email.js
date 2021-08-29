@@ -2,9 +2,13 @@ require('dotenv').config()
 const mailgun = require('mailgun-js')
 
 exports.handler = (event, _context, callback) => {
-    const mg = mailgun({ apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN })
+    const mg = mailgun({ 
+        apiKey: process.env.MAILGUN_API_KEY, 
+        domain: process.env.MAILGUN_DOMAIN 
+    })
+
     const data = JSON.parse(event.body)
-    
+
     const content = `
         <html>
         <body>
@@ -21,10 +25,10 @@ exports.handler = (event, _context, callback) => {
     `
 
     const emailData = {
-        from: 'Excited User <me@samples.mailgun.org>',
-        to: 'peerawat@odds.team',
-        subject: 'Hello',
-        text: content
+        from: 'Corporate Site <pakanan@humancapitalhub.co>',
+        to: 'peerawat@odds.team', // pakanan@humancapitalhub.co
+        subject: 'New Request from Corporate Site',
+        html: content
     }
 
     mg.messages().send(emailData, (error, response) => {
@@ -33,5 +37,4 @@ exports.handler = (event, _context, callback) => {
             body: JSON.stringify(response)
         })
     })
-    // callback('Errr!', { statusCode: 500, body: JSON.stringify({ foo: 'bar' }) })
 }

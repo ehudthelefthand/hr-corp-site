@@ -7,9 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Human Capitalhub</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="/css/font/all.min.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -108,11 +109,11 @@
                 <div class="field-group">
                     <div>
                         <div><label for="firstname">First name<span class="required">*</span></label></div>
-                        <div><input id="firstname" name="firstname" type="text" required value="test"></div>
+                        <div><input id="firstname" name="firstname" type="text" required></div>
                     </div>
                     <div>
                         <div><label for="lastname">Last name<span class="required">*</span></label></div>
-                        <div><input id="lastname" name="lastname" type="text" required value="test"></div>
+                        <div><input id="lastname" name="lastname" type="text" required></div>
                     </div>
                 </div>
                 <div>
@@ -121,19 +122,19 @@
                 </div>
                 <div>
                     <div><label for="phone">Phone Number<span class="required">*</span></label></div>
-                    <div><input id="phone" name="phone" type="tel" required value="test"></div>
+                    <div><input id="phone" name="phone" type="tel" required></div>
                 </div>
                 <div>
                     <div><label for="job">Job title<span class="required">*</span></label></div>
-                    <div><input id="job" name="job" type="text" required value="test"></div>
+                    <div><input id="job" name="job" type="text" required></div>
                 </div>
                 <div>
                     <div><label for="organisation">Organisation<span class="required">*</span></label></div>
-                    <div><input id="organisation" name="organisation" type="text" required value="test"></div>
+                    <div><input id="organisation" name="organisation" type="text" required></div>
                 </div>
                 <div>
                     <div><label for="website">Website URL</label></div>
-                    <div><input id="website" name="website" type="text" value="test"></div>
+                    <div><input id="website" name="website" type="text"></div>
                 </div>
                 <section id="privacy-policy" class="privacy-policy">
                     <h2 class="title">Privacy Policy</h2>
@@ -360,20 +361,19 @@
             .then(data => {
                 requestButton.disabled = false
                 Toastify({
-                    text: 'Your request was sent successfully',
+                    text: '<i class="fas fa-check-circle"></i> Your request was sent successfully',
                     duration: 3000,
                     position: 'center',
+                    escapeMarkup: false,
                 }).showToast()
             })
             .catch(() => {
                 requestButton.disabled = false
                 Toastify({
-                    text: 'Your request was error. Please try again.',
+                    text: '<i class="fas fa-exclamation-circle"></i> Your request was error. Please try again.',
                     duration: 3000,
                     position: 'center',
-                    style: {
-                        background: '#CC0000'
-                    }
+                    escapeMarkup: false,
                 }).showToast()
             })
         })
