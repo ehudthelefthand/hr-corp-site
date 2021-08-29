@@ -360,7 +360,7 @@
             .then(response => response.json())
             .then(data => {
                 requestButton.disabled = false
-                resetForm()
+                // resetForm()
                 Toastify({
                     text: '<i class="fas fa-check-circle"></i> Your request was sent successfully',
                     duration: 3000,
@@ -370,7 +370,7 @@
             })
             .catch(() => {
                 requestButton.disabled = false
-                resetForm()
+                // resetForm()
                 Toastify({
                     text: '<i class="fas fa-exclamation-circle"></i> Your request was error. Please try again.',
                     duration: 3000,
