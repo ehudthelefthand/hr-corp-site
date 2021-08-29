@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -310,7 +311,7 @@
         <div class="spacer"></div>
     </div>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
         const swiper = new Swiper('.mySwiper', {
             loop: true,
@@ -346,36 +347,35 @@
 
         form.addEventListener('submit', function(e) {
             e.preventDefault()
+            requestButton.disabled = true
             let data = {}
             for (let input of inputs) {
                 data[input.name] = input.value
             }
-            console.log(data)
-            const content = `
-                <html>
-                <body>
-                    <div><strong>First name: </strong><span>${data['firstname']}</span></div>
-                    <div><strong>Last name: </strong><span>${data['lastname']}</span></div>
-                    <div><strong>Email: </strong><span>${data['email']}</span></div>
-                    <div><strong>Phone Number: </strong><span>${data['phone']}</span></div>
-                    <div><strong>Job title: </strong><span>${data['job']}</span></div>
-                    <div><strong>Organisation: </strong><span>${data['organisation']}</span></div>
-                    <div><strong>Website: </strong><span>${data['website']}</span></div>
-                    <div><strong>Agree to policy?: </strong><span>${data['isAgree'] === 'on' ? 'Yes' : 'No'}</span></div>
-                </body>
-                </html>
-            `
-            Email.send({
-                Host : "smtp.mailtrap.io",
-                Username: '8b590d559f8ee6',
-                Password: '05e04e3862eb61',
-                To : 'recipient@pongneng.xyz',
-                From : "sender@pongneng.xyz",
-                Subject : "Test email",
-                Body : content
-            }).then(
-                message => alert(message)
-            );
+            fetch('/api/email', {
+                method: 'POST',
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                requestButton.disabled = false
+                Toastify({
+                    text: 'Your request was sent successfully',
+                    duration: 3000,
+                    position: 'center',
+                }).showToast()
+            })
+            .catch(() => {
+                requestButton.disabled = false
+                Toastify({
+                    text: 'Your request was error. Please try again.',
+                    duration: 3000,
+                    position: 'center',
+                    style: {
+                        background: '#CC0000'
+                    }
+                }).showToast()
+            })
         })
 
         gotoRequest.addEventListener('click', function() {
