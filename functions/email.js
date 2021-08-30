@@ -26,8 +26,9 @@ exports.handler = (event, _context, callback) => {
 
     const emailData = {
         from: 'Corporate Site <pakanan@humancapitalhub.co>',
-        to: 'peerawat@odds.team',
+        // to: 'peerawat@odds.team',
         // to: 'pakanan@humancapitalhub.co',
+        to: 'appletarangsi@gmail.com',
         subject: 'New Request from Corporate Site',
         html: content
     }
