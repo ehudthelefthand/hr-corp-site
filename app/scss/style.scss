@@ -210,6 +210,12 @@ body {
             transform: translateX(-50%);
             background-color: #fff;
             z-index: 5;
+            @media only screen and (max-width: 768px) {
+                display: block;
+                padding: 0 16px;
+                margin: 0 auto;
+                transform: translateX(0);
+            }
         }
         .line {
             display: block;
@@ -219,12 +225,18 @@ body {
             height: 2px;
             background-color: #CC0000;
             z-index: 1;
+            @media only screen and (max-width: 768px) {
+                display: none;
+            }
         }
     }
     
     .container {
         max-width: $container-width;
         margin: 0 auto;
+        @media only screen and (max-width: 1024px) {
+            padding: 0 16px;
+        }
         .description {
             .title {
                 position: relative;
@@ -233,6 +245,9 @@ body {
                 font-weight: 700;
                 text-align: center;
                 line-height: 60px;
+                @media only screen and (max-width: 1024px) {
+                    font-size: 40px;
+                }
                 &.line-right::after,
                 &.line-left::after {
                     content: "";
@@ -242,7 +257,7 @@ body {
                     width: 130px;
                     height: 2px;
                     background-color: #CC0000;
-                    @media only screen and (max-width: 1090px) {
+                    @media only screen and (max-width: 1024px) {
                         display: none;
                     }
                 }
@@ -269,12 +284,15 @@ body {
         }
         .recruitment, .outsourcing {
             display: flex;
-            @media only screen and (max-width: 1090px) {
+            @media only screen and (max-width: 1024px) {
                 flex-flow: column;
             }
             justify-content: space-around;
             align-items: center;
             margin-top: 120px;
+            @media only screen and (max-width: 1024px) {
+                margin-top: 36px;
+            }
 
             .image {
                 flex: 0.82352941176;
@@ -287,16 +305,21 @@ body {
             }
         }
         .recruitment {
-            @media only screen and (max-width: 1090px) {
+            @media only screen and (max-width: 1024px) {
                 flex-flow: column-reverse;
             }
             .image {
                 margin-right: 72px;
                 position: relative;
+                @media only screen and (max-width: 1024px) {
+                    max-width: 300px;
+                    margin: 0 auto;
+                    margin-top: 32px;
+                }
                 &::before {
                     content: "";
                     display: block;
-                    @media only screen and (max-width: 1090px) {
+                    @media only screen and (max-width: 1024px) {
                         display: none;
                     }
                     width: 100%;
@@ -312,7 +335,7 @@ body {
                 &::after {
                     content: "";
                     display: block;
-                    @media only screen and (max-width: 1090px) {
+                    @media only screen and (max-width: 1024px) {
                         display: none;
                     }
                     width: 100px;
@@ -334,10 +357,15 @@ body {
             .image {
                 margin-left: 72px;
                 position: relative;
+                @media only screen and (max-width: 1024px) {
+                    max-width: 300px;
+                    margin: 0 auto;
+                    margin-top: 32px;
+                }
                 &::before {
                     content: "";
                     display: block;
-                    @media only screen and (max-width: 1090px) {
+                    @media only screen and (max-width: 1024px) {
                         display: none;
                     }
                     width: 100%;
@@ -353,7 +381,7 @@ body {
                 &::after {
                     content: "";
                     display: block;
-                    @media only screen and (max-width: 1090px) {
+                    @media only screen and (max-width: 1024px) {
                         display: none;
                     }
                     width: 100%;
