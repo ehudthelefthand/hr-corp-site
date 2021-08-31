@@ -74,7 +74,7 @@
         </div>
         <div class="swiper-pagination"></div>
     </div>
-    <div class="service">
+    <!-- <div class="service">
         <div class="line-container">
             <h1 class="title">Our Services</h1>
             <div class="line"></div>
@@ -101,7 +101,7 @@
                 </div>
             </section>
         </div>
-    </div>
+    </div> -->
     <div id="request-section" class="request">
         <div class="container">
             <h1 class="title">Request a callback</h1>
@@ -286,7 +286,7 @@
                 </section>
                 <div class="field-inline agree-policy">
                     <label for="agree-policy">I agree with all <a href="#privacy-policy" id="agree-policy-link">Privacy Policy</a>
-                        <input id="agree-policy" type="checkbox" name="isAgree">
+                        <input id="agree-policy" type="checkbox" name="isAgree" disabled>
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -316,10 +316,10 @@
     <script>
         const swiper = new Swiper('.mySwiper', {
             loop: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
+            // autoplay: {
+            //     delay: 4000,
+            //     disableOnInteraction: false,
+            // },
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,

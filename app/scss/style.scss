@@ -14,6 +14,10 @@ $container-width: 960px;
     font-size: 64px;
     font-weight: 700;
     line-height: 90px;
+    @media only screen and (max-width: 768px) {
+        font-size: 48px;
+        line-height: 70px;
+    }
 }
 
 html {
@@ -41,7 +45,7 @@ body {
         margin: 0 auto;
         display: flex;
         align-items: center;
-        padding: 20px 0;
+        padding: 16px;
         .logo {
             width: 120px;
             height: 120px;
@@ -59,12 +63,16 @@ body {
     .container {
         max-width: $container-width;
         margin: 0 auto;
+        padding: 0 16px;
         .title {
             @include section-title($text-align: left);
             margin-top: 120px;
         }
         .subtitle {
             margin-top: 56px;
+            @media only screen and (max-width: 768px) {
+                margin-top: 40px;
+            }
             color: $body-primary;
             font-size: 24px;
             font-weight: 300;
@@ -94,6 +102,9 @@ body {
     &.swiper {
         width: 100%;
         height: 800px;
+        @media only screen and (max-width: 768px) {
+            height: auto;
+        }
         background-color: $bg-primary;
     }
     .swiper-slide {
@@ -106,6 +117,9 @@ body {
             height: 600px;
             margin: 0 auto;
             background-color: $bg-primary;
+            @media only screen and (max-width: 768px) {
+                padding: 80px 0;
+            }
             .slide-image {
                 display: block;
                 position: absolute;
@@ -139,11 +153,35 @@ body {
                     line-height: 40px;
                     text-align: center;
                 }
-            }    
+            }
+            
+            @media only screen and (max-width: 768px) {
+                display: block;
+                position: static;
+                height: auto;
+                transform: translateY(0);
+                .slide-image {
+                    display: block;
+                    position: static;
+                }
+                .slide-text {
+                    display: block;
+                    position: static;
+                    padding: 0 16px;
+                    margin-top: 24px;
+
+                    .content {
+                        margin-top: 24px;
+                    }
+                }
+            }
         }
     }
     .swiper-pagination {
         bottom: 72px;
+        @media only screen and (max-width: 768px) {
+            bottom: 16px;
+        }
         .swiper-pagination-bullet {
             width: 72px;
             height: 6px;
@@ -157,10 +195,6 @@ body {
         }
     }
     
-}
-
-.frame-1 {
-    object-fit: contain;
 }
 
 .service {
@@ -202,11 +236,15 @@ body {
                 &.line-right::after,
                 &.line-left::after {
                     content: "";
+                    display: block;
                     position: absolute;
                     bottom: 13px;
                     width: 130px;
                     height: 2px;
                     background-color: #CC0000;
+                    @media only screen and (max-width: 1090px) {
+                        display: none;
+                    }
                 }
                 &.line-right::after {
                     right: -48px;
@@ -231,6 +269,9 @@ body {
         }
         .recruitment, .outsourcing {
             display: flex;
+            @media only screen and (max-width: 1090px) {
+                flex-flow: column;
+            }
             justify-content: space-around;
             align-items: center;
             margin-top: 120px;
@@ -246,12 +287,18 @@ body {
             }
         }
         .recruitment {
+            @media only screen and (max-width: 1090px) {
+                flex-flow: column-reverse;
+            }
             .image {
                 margin-right: 72px;
                 position: relative;
                 &::before {
                     content: "";
                     display: block;
+                    @media only screen and (max-width: 1090px) {
+                        display: none;
+                    }
                     width: 100%;
                     height: 100%;
                     position: absolute;
@@ -265,6 +312,9 @@ body {
                 &::after {
                     content: "";
                     display: block;
+                    @media only screen and (max-width: 1090px) {
+                        display: none;
+                    }
                     width: 100px;
                     height: 250px;
                     position: absolute;
@@ -287,6 +337,9 @@ body {
                 &::before {
                     content: "";
                     display: block;
+                    @media only screen and (max-width: 1090px) {
+                        display: none;
+                    }
                     width: 100%;
                     height: 320px;
                     position: absolute;
@@ -300,6 +353,9 @@ body {
                 &::after {
                     content: "";
                     display: block;
+                    @media only screen and (max-width: 1090px) {
+                        display: none;
+                    }
                     width: 100%;
                     height: 350px;
                     position: absolute;
@@ -322,10 +378,16 @@ body {
         max-width: 800px;
         margin: 0 auto;
         padding: 96px;
+        @media only screen and (max-width: 425px) {
+            padding: 16px;
+        }
         background-color: $bg-secondary;
         .title {
             @include section-title;
             margin-bottom: 56px;
+            @media only screen and (max-width: 425px) {
+                margin-bottom: 16px;
+            }
         }
         form {
             display: grid;
@@ -334,7 +396,11 @@ body {
             .field-group {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 24px
+                gap: 24px;
+                @media only screen and (max-width: 700px) {
+                    grid-template-columns: 1fr;
+                    gap: 24px;
+                }
             }
             .field-inline {
                 display: flex;
@@ -442,6 +508,12 @@ body {
             border: 1px solid rgba(21, 32, 132, 0.2);
             background-color: #fff;
             height: 800px;
+            @media only screen and (max-width: 425px) {
+                height: 300px;
+            }
+            @media only screen and (max-width: 768px) {
+                height: 400px;
+            }
             overflow-y: scroll;
             .title {
                 color: $title-primary;
@@ -510,6 +582,9 @@ body {
     }
     .container{
         display: flex;
+        @media only screen and (max-width: 1120px) {
+            flex-flow: column;       
+        }
         max-width: $container-width;
         align-items: center;
         margin: 48px auto;
@@ -538,9 +613,6 @@ body {
         }
         .footer-logo{
             width: 280px;
-            img {
-                width: 100%;
-            }
         }
     }
     .spacer {

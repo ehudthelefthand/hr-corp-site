@@ -40,3 +40,12 @@ exports.handler = (event, _context, callback) => {
         })
     })
 }
+
+// from: Request a callback
+// subject: New Request from Corporate Site
+
+// to requester
+// from: Human Capital Hub <pakanan@humancapitalhub.co>
+// subject: Acknowledged request a callback
+// body:
+// to: email of requester

@@ -20,7 +20,7 @@ body {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    padding: 20px 0; }
+    padding: 16px; }
     .header .container .logo {
       width: 120px;
       height: 120px; }
@@ -32,7 +32,8 @@ body {
 
 .banner .container {
   max-width: 960px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding: 0 16px; }
   .banner .container .title {
     color: #152084;
     text-align: left;
@@ -40,12 +41,19 @@ body {
     font-weight: 700;
     line-height: 90px;
     margin-top: 120px; }
+    @media only screen and (max-width: 768px) {
+      .banner .container .title {
+        font-size: 48px;
+        line-height: 70px; } }
   .banner .container .subtitle {
     margin-top: 56px;
     color: #23242B;
     font-size: 24px;
     font-weight: 300;
     line-height: 40px; }
+    @media only screen and (max-width: 768px) {
+      .banner .container .subtitle {
+        margin-top: 40px; } }
   .banner .container .request {
     margin-top: 48px;
     margin-bottom: 96px;
@@ -66,6 +74,9 @@ body {
   width: 100%;
   height: 800px;
   background-color: #152084; }
+  @media only screen and (max-width: 768px) {
+    .slide.swiper {
+      height: auto; } }
 
 .slide .swiper-slide .container {
   display: block;
@@ -76,6 +87,9 @@ body {
   height: 600px;
   margin: 0 auto;
   background-color: #152084; }
+  @media only screen and (max-width: 768px) {
+    .slide .swiper-slide .container {
+      padding: 80px 0; } }
   .slide .swiper-slide .container .slide-image {
     display: block;
     position: absolute;
@@ -103,6 +117,10 @@ body {
       font-weight: 700;
       line-height: 90px;
       color: #fff; }
+      @media only screen and (max-width: 768px) {
+        .slide .swiper-slide .container .slide-text .title {
+          font-size: 48px;
+          line-height: 70px; } }
     .slide .swiper-slide .container .slide-text .content {
       margin-top: 96px;
       color: #fff;
@@ -110,9 +128,28 @@ body {
       font-weight: 700;
       line-height: 40px;
       text-align: center; }
+  @media only screen and (max-width: 768px) {
+    .slide .swiper-slide .container {
+      display: block;
+      position: static;
+      height: auto;
+      transform: translateY(0); }
+      .slide .swiper-slide .container .slide-image {
+        display: block;
+        position: static; }
+      .slide .swiper-slide .container .slide-text {
+        display: block;
+        position: static;
+        padding: 0 16px;
+        margin-top: 24px; }
+        .slide .swiper-slide .container .slide-text .content {
+          margin-top: 24px; } }
 
 .slide .swiper-pagination {
   bottom: 72px; }
+  @media only screen and (max-width: 768px) {
+    .slide .swiper-pagination {
+      bottom: 16px; } }
   .slide .swiper-pagination .swiper-pagination-bullet {
     width: 72px;
     height: 6px;
@@ -122,9 +159,6 @@ body {
     margin: 0 !important; }
   .slide .swiper-pagination .swiper-pagination-bullet-active {
     background-color: #CC0000; }
-
-.frame-1 {
-  object-fit: contain; }
 
 .service {
   margin-top: 96px; }
@@ -143,6 +177,10 @@ body {
       transform: translateX(-50%);
       background-color: #fff;
       z-index: 5; }
+      @media only screen and (max-width: 768px) {
+        .service .line-container .title {
+          font-size: 48px;
+          line-height: 70px; } }
     .service .line-container .line {
       display: block;
       position: absolute;
@@ -163,11 +201,15 @@ body {
       line-height: 60px; }
       .service .container .description .title.line-right::after, .service .container .description .title.line-left::after {
         content: "";
+        display: block;
         position: absolute;
         bottom: 13px;
         width: 130px;
         height: 2px;
         background-color: #CC0000; }
+        @media only screen and (max-width: 1090px) {
+          .service .container .description .title.line-right::after, .service .container .description .title.line-left::after {
+            display: none; } }
       .service .container .description .title.line-right::after {
         right: -48px; }
       .service .container .description .title.line-left::after {
@@ -186,12 +228,18 @@ body {
       justify-content: space-around;
       align-items: center;
       margin-top: 120px; }
+      @media only screen and (max-width: 1090px) {
+        .service .container .recruitment, .service .container .outsourcing {
+          flex-flow: column; } }
       .service .container .recruitment .image, .service .container .outsourcing .image {
         flex: 0.82352941176; }
         .service .container .recruitment .image img, .service .container .outsourcing .image img {
           object-fit: contain; }
       .service .container .recruitment .description, .service .container .outsourcing .description {
         flex: 1; }
+    @media only screen and (max-width: 1090px) {
+      .service .container .recruitment {
+        flex-flow: column-reverse; } }
     .service .container .recruitment .image {
       margin-right: 72px;
       position: relative; }
@@ -207,6 +255,9 @@ body {
         background-image: url(/assets/recruitment-rectangle-1.png);
         background-size: contain;
         background-repeat: no-repeat; }
+        @media only screen and (max-width: 1090px) {
+          .service .container .recruitment .image::before {
+            display: none; } }
       .service .container .recruitment .image::after {
         content: "";
         display: block;
@@ -220,6 +271,9 @@ body {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: right; }
+        @media only screen and (max-width: 1090px) {
+          .service .container .recruitment .image::after {
+            display: none; } }
     .service .container .outsourcing {
       margin-bottom: 96px; }
       .service .container .outsourcing .image {
@@ -237,6 +291,9 @@ body {
           background-image: url(/assets/outsourcing-rectangle-1.png);
           background-size: contain;
           background-repeat: no-repeat; }
+          @media only screen and (max-width: 1090px) {
+            .service .container .outsourcing .image::before {
+              display: none; } }
         .service .container .outsourcing .image::after {
           content: "";
           display: block;
@@ -250,6 +307,9 @@ body {
           background-size: contain;
           background-repeat: no-repeat;
           background-position: right; }
+          @media only screen and (max-width: 1090px) {
+            .service .container .outsourcing .image::after {
+              display: none; } }
 
 .request {
   background-color: #152084; }
@@ -258,6 +318,9 @@ body {
     margin: 0 auto;
     padding: 96px;
     background-color: #F6F8FB; }
+    @media only screen and (max-width: 425px) {
+      .request .container {
+        padding: 16px; } }
     .request .container .title {
       color: #152084;
       text-align: center;
@@ -265,6 +328,13 @@ body {
       font-weight: 700;
       line-height: 90px;
       margin-bottom: 56px; }
+      @media only screen and (max-width: 768px) {
+        .request .container .title {
+          font-size: 48px;
+          line-height: 70px; } }
+      @media only screen and (max-width: 425px) {
+        .request .container .title {
+          margin-bottom: 16px; } }
     .request .container form {
       display: grid;
       grid-template-rows: 1fr;
@@ -273,6 +343,10 @@ body {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 24px; }
+        @media only screen and (max-width: 700px) {
+          .request .container form .field-group {
+            grid-template-columns: 1fr;
+            gap: 24px; } }
       .request .container form .field-inline {
         display: flex;
         align-items: center; }
@@ -362,6 +436,12 @@ body {
       background-color: #fff;
       height: 800px;
       overflow-y: scroll; }
+      @media only screen and (max-width: 425px) {
+        .request .container .privacy-policy {
+          height: 300px; } }
+      @media only screen and (max-width: 768px) {
+        .request .container .privacy-policy {
+          height: 400px; } }
       .request .container .privacy-policy .title {
         color: #152084;
         font-size: 24px;
@@ -415,6 +495,9 @@ body {
     align-items: center;
     margin: 48px auto;
     margin-bottom: 0; }
+    @media only screen and (max-width: 1120px) {
+      .footer .container {
+        flex-flow: column; } }
     .footer .container .contact {
       flex: 1;
       padding-left: 24px;
@@ -435,8 +518,6 @@ body {
           font-weight: 700; }
     .footer .container .footer-logo {
       width: 280px; }
-      .footer .container .footer-logo img {
-        width: 100%; }
   .footer .spacer {
     display: block;
     height: 48px; }
