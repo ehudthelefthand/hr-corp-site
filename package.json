@@ -16,6 +16,7 @@
     "node-sass": "^6.0.1"
   },
   "dependencies": {
+    "@mailchimp/mailchimp_transactional": "^1.0.33",
     "dotenv": "^10.0.0",
     "mailgun-js": "^0.22.0"
   }

@@ -1,14 +1,26 @@
 require('dotenv').config()
-const mailgun = require('mailgun-js')
+const mailchimp = require('@mailchimp/mailchimp_transactional')(process.env.MAILCHIMP_API_KEY);
 
 exports.handler = (event, _context, callback) => {
-    const mg = mailgun({ 
-        apiKey: process.env.MAILGUN_API_KEY, 
-        domain: process.env.MAILGUN_DOMAIN 
-    })
-
     const data = JSON.parse(event.body)
+    Promise.all([
+        sendEmailToAdmin({ data }),
+        sendEmailToClient({ to: data['email'] }),
+    ])
+    .then(() => {
+        callback(null, {
+            statusCode: 200,
+            body: JSON.stringify({
+                message: 'email sent'
+            })
+        })
+    })
+    .catch(err => {
+        callback(err)
+    })
+}
 
+function sendEmailToAdmin({ data }) {
     const content = `
         <html>
         <body>
@@ -21,31 +33,48 @@ exports.handler = (event, _context, callback) => {
             <div><strong>Website: </strong><span>${data['website']}</span></div>
             <div><strong>Agree to policy?: </strong><span>${data['isAgree'] === 'on' ? 'Yes' : 'No'}</span></div>
         </body>
-        </html>
-    `
+        </html>`
 
-    const emailData = {
-        from: 'Corporate Site <pakanan@humancapitalhub.co>',
-        // to: 'peerawat@odds.team',
-        // to: 'pakanan@humancapitalhub.co',
-        to: 'appletarangsi@gmail.com',
+    const message = {
+        from_email: 'pakanan@humancapitalhub.co',
+        from_name: 'Request a callback',
         subject: 'New Request from Corporate Site',
-        html: content
+        html: content,
+        to: [
+            {
+                email: 'pakanan@humancapitalhub.co',
+                type: 'to'
+            }
+        ]
     }
 
-    mg.messages().send(emailData, (error, response) => {
-        callback(error, {
-            statusCode: 200,
-            body: JSON.stringify(response)
-        })
-    })
+    return mailchimp.messages.send({ message })
 }
 
-// from: Request a callback
-// subject: New Request from Corporate Site
+function sendEmailToClient({ to }) {
+    const content = `
+        <html>
+        <body>
+            <p>Thank you for your request. We will get back to you as soon as possible.</p>
+            <p>
+                Regards, <br>
+                Human Capital Hub (Thailand) Limited
+            </p>
+        </body>
+        </html>`
 
-// to requester
-// from: Human Capital Hub <pakanan@humancapitalhub.co>
-// subject: Acknowledged request a callback
-// body:
-// to: email of requester
+    const message = {
+        from_email: 'pakanan@humancapitalhub.co',
+        from_name: 'Human Capital Hub',
+        subject: 'Acknowledged request a callback',
+        html: content,
+        to: [
+            {
+                email: to,
+                type: 'to'
+            }
+        ]
+    }
+    
+    return mailchimp.messages.send({ message })
+}
