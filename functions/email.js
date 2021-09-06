@@ -3,11 +3,14 @@ const mailchimp = require('@mailchimp/mailchimp_transactional')(process.env.MAIL
 
 exports.handler = (event, _context, callback) => {
     const data = JSON.parse(event.body)
+    console.log(data)
     Promise.all([
         sendEmailToAdmin({ data }),
         sendEmailToClient({ to: data['email'] }),
     ])
-    .then(() => {
+    .then(([ emailToAdminResp, emailToClientResp ]) => {
+        console.log(emailToAdminResp)
+        console.log(emailToClientResp)
         callback(null, {
             statusCode: 200,
             body: JSON.stringify({
@@ -16,6 +19,7 @@ exports.handler = (event, _context, callback) => {
         })
     })
     .catch(err => {
+        console.log(err)
         callback(err)
     })
 }
